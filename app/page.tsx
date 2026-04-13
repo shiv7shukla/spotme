@@ -1,6 +1,9 @@
+/* eslint-disable react/no-unescaped-entities */
+"use client";
+import { useRouter } from "next/navigation";
 import { ArrowRight, Scan, Camera, Download, ImagePlus, Sparkles, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import SpotMeLogo from "@/components/SpotMeLogo";
+import SpotMeLogo from "@/components/ui/SpotMeLogo";
 
 const steps = [
   { icon: ImagePlus, title: "Upload", desc: "Organizer uploads all event photos to a private space" },
@@ -9,7 +12,8 @@ const steps = [
   { icon: Download, title: "Collect", desc: "Download every photo you appear in, instantly" },
 ];
 
-const Index = () => {
+export default function Page() {
+  const router = useRouter();
 
   return (
     <div className="min-h-screen bg-background">
@@ -17,10 +21,10 @@ const Index = () => {
       <nav className="container max-w-6xl mx-auto flex items-center justify-between h-14 px-4">
         <SpotMeLogo />
         <div className="flex items-center gap-2">
-          <Button variant="ghost" size="sm" className="text-muted-foreground" onClick={() => navigate("/attendee")}>
+          <Button variant="ghost" size="sm" className="text-muted-foreground" onClick={() => router.push("/attendee")}>
             Find Photos
           </Button>
-          <Button size="sm" onClick={() => navigate("/organizer")}>
+          <Button size="sm" onClick={() => router.push("/organizer")}>
             Create Space
           </Button>
         </div>
@@ -44,11 +48,11 @@ const Index = () => {
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 opacity-0 animate-fade-up" style={{ animationDelay: "0.3s" }}>
-          <Button size="lg" className="px-8 gap-2 text-base" onClick={() => navigate("/organizer")}>
+          <Button size="lg" className="px-8 gap-2 text-base" onClick={() => router.push("/organizer")}>
             Create a Space
             <ArrowRight size={16} />
           </Button>
-          <Button variant="outline" size="lg" className="px-8 gap-2 text-base" onClick={() => navigate("/attendee")}>
+          <Button variant="outline" size="lg" className="px-8 gap-2 text-base" onClick={() => router.push("/attendee")}>
             Find My Photos
           </Button>
         </div>
@@ -62,7 +66,7 @@ const Index = () => {
             <h2 className="font-display text-3xl sm:text-4xl text-foreground">Four simple steps</h2>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
+          <div className="grid grid-cols-4 md:grid-cols-4 gap-6 sm:gap-8">
             {steps.map((s, i) => (
               <div
                 key={i}
@@ -88,7 +92,7 @@ const Index = () => {
         <div className="container max-w-6xl mx-auto px-4 py-20 sm:py-28">
           <div className="grid sm:grid-cols-2 gap-4 max-w-3xl mx-auto">
             <button
-              onClick={() => navigate("/organizer")}
+              onClick={() => router.push("/organizer")}
               className="glass-card-hover p-8 text-left group cursor-pointer"
             >
               <div className="w-10 h-10 rounded-lg bg-foreground flex items-center justify-center mb-5">
@@ -104,7 +108,7 @@ const Index = () => {
             </button>
 
             <button
-              onClick={() => navigate("/attendee")}
+              onClick={() => router.push("/attendee")}
               className="glass-card-hover p-8 text-left group cursor-pointer"
             >
               <div className="w-10 h-10 rounded-lg bg-foreground flex items-center justify-center mb-5">
@@ -134,5 +138,3 @@ const Index = () => {
     </div>
   );
 };
-
-export default Index;
