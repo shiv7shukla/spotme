@@ -61,7 +61,7 @@ export default function Page() {
             </Link>
           </Button>
           <Button asChild variant="outline" size="lg" className="px-8 gap-2 text-base">
-            <Link href="/organizer">
+            <Link href="/attendee">
               Find My Photos
             </Link>
           </Button>
