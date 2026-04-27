@@ -1,9 +1,9 @@
 /* eslint-disable react/no-unescaped-entities */
-"use client";
-import { useRouter } from "next/navigation";
 import { ArrowRight, Scan, Camera, Download, ImagePlus, Sparkles, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import SpotMeLogo from "@/components/ui/SpotMeLogo";
+import Link from "next/link";
+import dynamic from "next/dynamic";
 
 const steps = [
   { icon: ImagePlus, title: "Upload", desc: "Organizer uploads all event photos to a private space" },
@@ -13,7 +13,8 @@ const steps = [
 ];
 
 export default function Page() {
-  const router = useRouter();
+
+  const ThemeToggleNoSSR = dynamic(() => import('../components/ThemeToggle'), { ssr: !!false })
 
   return (
     <div className="min-h-screen bg-background">
@@ -21,12 +22,17 @@ export default function Page() {
       <nav className="container max-w-6xl mx-auto flex items-center justify-between h-14 px-4">
         <SpotMeLogo />
         <div className="flex items-center gap-2">
-          <Button variant="ghost" size="sm" className="text-muted-foreground" onClick={() => router.push("/attendee")}>
-            Find Photos
+          <Button asChild variant="ghost" size="sm" className="text-muted-foreground">
+            <Link href="/attendee">
+              Find Photos
+            </Link>
           </Button>
-          <Button size="sm" onClick={() => router.push("/organizer")}>
-            Create Space
+          <Button asChild size="sm">
+            <Link href="/organizer">
+              Create Space
+            </Link>
           </Button>
+          <ThemeToggleNoSSR />
         </div>
       </nav>
 
@@ -48,12 +54,16 @@ export default function Page() {
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 opacity-0 animate-fade-up" style={{ animationDelay: "0.3s" }}>
-          <Button size="lg" className="px-8 gap-2 text-base" onClick={() => router.push("/organizer")}>
-            Create a Space
-            <ArrowRight size={16} />
+          <Button asChild size="lg" className="px-8 gap-2 text-base">
+            <Link href="/organizer">
+              Create a Space
+              <ArrowRight size={16} />
+            </Link>
           </Button>
-          <Button variant="outline" size="lg" className="px-8 gap-2 text-base" onClick={() => router.push("/attendee")}>
-            Find My Photos
+          <Button asChild variant="outline" size="lg" className="px-8 gap-2 text-base">
+            <Link href="/organizer">
+              Find My Photos
+            </Link>
           </Button>
         </div>
       </section>
@@ -91,8 +101,7 @@ export default function Page() {
       <section className="border-t border-border bg-secondary/30">
         <div className="container max-w-6xl mx-auto px-4 py-20 sm:py-28">
           <div className="grid sm:grid-cols-2 gap-4 max-w-3xl mx-auto">
-            <button
-              onClick={() => router.push("/organizer")}
+            <Link href="/organizer"
               className="glass-card-hover p-8 text-left group cursor-pointer"
             >
               <div className="w-10 h-10 rounded-lg bg-foreground flex items-center justify-center mb-5">
@@ -105,10 +114,9 @@ export default function Page() {
               <div className="flex items-center gap-1 text-sm font-medium text-foreground mt-4 group-hover:gap-2 transition-all">
                 Get started <ArrowRight size={14} />
               </div>
-            </button>
+            </Link>
 
-            <button
-              onClick={() => router.push("/attendee")}
+            <Link href="/attendee"
               className="glass-card-hover p-8 text-left group cursor-pointer"
             >
               <div className="w-10 h-10 rounded-lg bg-foreground flex items-center justify-center mb-5">
@@ -121,7 +129,7 @@ export default function Page() {
               <div className="flex items-center gap-1 text-sm font-medium text-foreground mt-4 group-hover:gap-2 transition-all">
                 Find photos <ArrowRight size={14} />
               </div>
-            </button>
+            </Link>
           </div>
         </div>
       </section>
