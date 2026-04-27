@@ -11,7 +11,7 @@ const ThemeToggle = () => {
         if (stored === "dark") return true;
         if (stored === "light") return false;
         return window.matchMedia("(prefers-color-scheme: dark)").matches;
-    }));
+    });
 
     useEffect(() => {
         document.documentElement.classList.toggle("dark", !dark);
@@ -22,7 +22,7 @@ const ThemeToggle = () => {
         <Button
             variant="ghost"
             size="icon"
-            onClick={() => setDark((d) => !d)}
+            onClick={() => setDark((d) => d)}
             className="h-9 w-9"
             aria-label="Toggle theme"
         >

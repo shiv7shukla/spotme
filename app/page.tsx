@@ -97,36 +97,30 @@ export default function Page() {
       <section className="border-t border-border bg-secondary/30">
         <div className="container max-w-6xl mx-auto px-4 py-20 sm:py-28">
           <div className="grid sm:grid-cols-2 gap-4 max-w-3xl mx-auto">
-            <button asChild className="glass-card-hover p-8 text-left group cursor-pointer"
-                />
-              <Link href="/organizer">
-                <div className="w-10 h-10 rounded-lg bg-foreground flex items-center justify-center mb-5">
-                  <Users className="text-primary-foreground" size={18} />
-                </div>
-                <h3 className="font-display text-xl text-foreground mb-2">I'm organizing</h3>
-                <p className="font-body text-sm text-muted-foreground leading-relaxed">
-                  Create a private space, upload event photos, and share access with your guests.
-                </p>
-                <div className="flex items-center gap-1 text-sm font-medium text-foreground mt-4 group-hover:gap-2 transition-all">
-                  Get started <ArrowRight size={14} />
-                </div>
+            <Link href="/organizer" className="glass-card-hover p-8 text-left group cursor-pointer">
+              <div className="w-10 h-10 rounded-lg bg-foreground flex items-center justify-center mb-5">
+                <Users className="text-primary-foreground" size={18} />
+              </div>
+              <h3 className="font-display text-xl text-foreground mb-2">I'm organizing</h3>
+              <p className="font-body text-sm text-muted-foreground leading-relaxed">
+                Create a private space, upload event photos, and share access with your guests.
+              </p>
+              <div className="flex items-center gap-1 text-sm font-medium text-foreground mt-4 group-hover:gap-2 transition-all">
+                Get started <ArrowRight size={14} />
+              </div>
             </Link>
 
-            <Link href="/attendee">
-              <button
-                className="glass-card-hover p-8 text-left group cursor-pointer"
-                >
-                <div className="w-10 h-10 rounded-lg bg-foreground flex items-center justify-center mb-5">
-                  <Camera className="text-primary-foreground" size={18} />
-                </div>
-                <h3 className="font-display text-xl text-foreground mb-2">I'm a guest</h3>
-                <p className="font-body text-sm text-muted-foreground leading-relaxed">
-                  Enter your event code, verify your face, and find every photo of you instantly.
-                </p>
-                <div className="flex items-center gap-1 text-sm font-medium text-foreground mt-4 group-hover:gap-2 transition-all">
-                  Find photos <ArrowRight size={14} />
-                </div>
-              </button>
+            <Link href="/attendee" className="glass-card-hover p-8 text-left group cursor-pointer">
+              <div className="w-10 h-10 rounded-lg bg-foreground flex items-center justify-center mb-5">
+                <Camera className="text-primary-foreground" size={18} />
+              </div>
+              <h3 className="font-display text-xl text-foreground mb-2">I'm a guest</h3>
+              <p className="font-body text-sm text-muted-foreground leading-relaxed">
+                Enter your event code, verify your face, and find every photo of you instantly.
+              </p>
+              <div className="flex items-center gap-1 text-sm font-medium text-foreground mt-4 group-hover:gap-2 transition-all">
+                Find photos <ArrowRight size={14} />
+              </div>
             </Link>
           </div>
         </div>
