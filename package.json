@@ -7,8 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "migration:generate": "drizzle-kit generate",
-    "migration:migrate": "drizzle-kit migrate"
+    "migration:generate": "drizzle-kit generate --config=lib/drizzle.config.ts",
+    "migration:migrate": "drizzle-kit migrate --config=lib/drizzle.config.ts"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",

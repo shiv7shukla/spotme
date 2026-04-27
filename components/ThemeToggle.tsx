@@ -5,23 +5,18 @@ import { useEffect, useState } from "react";
 import { Button } from "./ui/button";
 
 const ThemeToggle = () => {
-    const [dark, setDark] = useState(() =>
-        {
-            if (localStorage.getItem("theme") !== null)
-                return localStorage.getItem("theme");
-            return false;
-        }
-    );
+    const [dark, setDark] = useState<boolean>(() => {
+        if (typeof window === "undefined") return false;
+        const stored = window.localStorage.getItem("theme");
+        if (stored === "dark") return true;
+        if (stored === "light") return false;
+        return window.matchMedia("(prefers-color-scheme: dark)").matches;
+    }));
 
     useEffect(() => {
-        if (dark) {
-            document.documentElement.classList.add("dark");
-            localStorage.setItem("theme", "dark");
-        } else {
-            document.documentElement.classList.remove("dark");
-            localStorage.setItem("theme", "light");
-        }
-    }, [dark]);
+        document.documentElement.classList.toggle("dark", !dark);
+        window.localStorage.setItem("theme", dark ? "dark" : "light");
+}, [dark]);
 
     return (
         <Button

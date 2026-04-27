@@ -22,16 +22,14 @@ export default function Page() {
       <nav className="container max-w-6xl mx-auto flex items-center justify-between h-14 px-4">
         <SpotMeLogo />
         <div className="flex items-center gap-2">
-          <Link href="/attendee">
-            <Button variant="ghost" size="sm" className="text-muted-foreground">
+          <Button asChild variant="ghost" size="sm" className="text-muted-foreground" />
+            <Link href="/attendee">
               Find Photos
-            </Button>
-          </Link>
-          <Link href="/organizer">
-            <Button size="sm">
+            </Link>
+          <Button asChild size="sm" />
+            <Link href="/organizer">
               Create Space
-            </Button>
-          </Link>
+            </Link>
           <ThemeToggleNoSSR />
         </div>
       </nav>
@@ -54,17 +52,15 @@ export default function Page() {
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 opacity-0 animate-fade-up" style={{ animationDelay: "0.3s" }}>
-          <Link href="/organizer">
-            <Button size="lg" className="px-8 gap-2 text-base">
+          <Button asChild size="lg" className="px-8 gap-2 text-base" />
+            <Link href="/organizer">
               Create a Space
               <ArrowRight size={16} />
-            </Button>
-          </Link>
-          <Link href="/organizer">
-            <Button variant="outline" size="lg" className="px-8 gap-2 text-base">
+            </Link>
+          <Button asChild variant="outline" size="lg" className="px-8 gap-2 text-base" />
+            <Link href="/attendee">
               Find My Photos
-            </Button>
-          </Link>
+            </Link>
         </div>
       </section>
 
@@ -101,10 +97,9 @@ export default function Page() {
       <section className="border-t border-border bg-secondary/30">
         <div className="container max-w-6xl mx-auto px-4 py-20 sm:py-28">
           <div className="grid sm:grid-cols-2 gap-4 max-w-3xl mx-auto">
-            <Link href="/organizer">
-              <button
-                className="glass-card-hover p-8 text-left group cursor-pointer"
-                >
+            <button asChild className="glass-card-hover p-8 text-left group cursor-pointer"
+                />
+              <Link href="/organizer">
                 <div className="w-10 h-10 rounded-lg bg-foreground flex items-center justify-center mb-5">
                   <Users className="text-primary-foreground" size={18} />
                 </div>
@@ -115,7 +110,6 @@ export default function Page() {
                 <div className="flex items-center gap-1 text-sm font-medium text-foreground mt-4 group-hover:gap-2 transition-all">
                   Get started <ArrowRight size={14} />
                 </div>
-              </button>
             </Link>
 
             <Link href="/attendee">
