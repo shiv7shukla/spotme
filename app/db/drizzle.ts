@@ -4,7 +4,7 @@ import 'dotenv/config';
 
 const connectionString = process.env.DATABASE_URL;
 
-if (!connectionString) throw new Error("DATABASE URL not set");
+if (!connectionString) throw new Error("DATABASE_URL not set");
 
 const globalForDb = globalThis as unknown as  { _spotmePool?: Pool};
 const pool = globalForDb._spotmePool ?? new Pool({ connectionString });
