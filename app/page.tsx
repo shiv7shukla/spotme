@@ -2,7 +2,7 @@
 import { ArrowRight, Scan, Camera, Download, ImagePlus, Sparkles, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import SpotMeLogo from "@/components/ui/SpotMeLogo";
-import dynamic from "next/dynamic";
+import ThemeToggle from "@/components/ThemeToggle";
 import Link from "next/link";
 
 const steps = [
@@ -14,23 +14,23 @@ const steps = [
 
 export default function Page() {
 
-  const ThemeToggleNoSSR = dynamic(() => import('../components/ThemeToggle'), { ssr: !!false })
-
   return (
     <div className="min-h-screen bg-background">
       {/* Nav */}
       <nav className="container max-w-6xl mx-auto flex items-center justify-between h-14 px-4">
         <SpotMeLogo />
         <div className="flex items-center gap-2">
-          <Button asChild variant="ghost" size="sm" className="text-muted-foreground" />
+          <Button asChild variant="ghost" size="sm" className="text-muted-foreground">
             <Link href="/attendee">
               Find Photos
             </Link>
-          <Button asChild size="sm" />
+          </Button>
+          <Button asChild size="sm">
             <Link href="/organizer">
               Create Space
             </Link>
-          <ThemeToggleNoSSR />
+          </Button>
+          <ThemeToggle />
         </div>
       </nav>
 
@@ -52,15 +52,17 @@ export default function Page() {
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 opacity-0 animate-fade-up" style={{ animationDelay: "0.3s" }}>
-          <Button asChild size="lg" className="px-8 gap-2 text-base" />
+          <Button asChild size="lg" className="px-8 gap-2 text-base">
             <Link href="/organizer">
               Create a Space
               <ArrowRight size={16} />
             </Link>
-          <Button asChild variant="outline" size="lg" className="px-8 gap-2 text-base" />
+          </Button>
+          <Button asChild variant="outline" size="lg" className="px-8 gap-2 text-base">
             <Link href="/attendee">
               Find My Photos
             </Link>
+          </Button>
         </div>
       </section>
 
@@ -97,7 +99,9 @@ export default function Page() {
       <section className="border-t border-border bg-secondary/30">
         <div className="container max-w-6xl mx-auto px-4 py-20 sm:py-28">
           <div className="grid sm:grid-cols-2 gap-4 max-w-3xl mx-auto">
-            <Link href="/organizer" className="glass-card-hover p-8 text-left group cursor-pointer">
+            <Link href="/organizer"
+              className="glass-card-hover p-8 text-left group cursor-pointer"
+            >
               <div className="w-10 h-10 rounded-lg bg-foreground flex items-center justify-center mb-5">
                 <Users className="text-primary-foreground" size={18} />
               </div>
@@ -110,7 +114,9 @@ export default function Page() {
               </div>
             </Link>
 
-            <Link href="/attendee" className="glass-card-hover p-8 text-left group cursor-pointer">
+            <Link href="/attendee"
+              className="glass-card-hover p-8 text-left group cursor-pointer"
+            >
               <div className="w-10 h-10 rounded-lg bg-foreground flex items-center justify-center mb-5">
                 <Camera className="text-primary-foreground" size={18} />
               </div>
