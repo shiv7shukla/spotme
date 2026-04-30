@@ -43,9 +43,6 @@ const CreateSpaceForm = () => {
         >
             Create Space
         </Button>
-        <p className="font-body text-xs text-muted-foreground text-center mt-4">
-            You&apos;ll get a Space ID to share with guests
-        </p>
         </div>
     );
 };
