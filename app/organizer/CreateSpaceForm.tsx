@@ -15,7 +15,7 @@ const CreateSpaceForm = () => {
     const { 
         register, 
         handleSubmit, 
-        formState:{ errors, isSubmitting, touchedFields } 
+        formState:{ errors, isSubmitting } 
     } = useForm<SpaceFormInput>({
         defaultValues: {
             spaceName: "",
@@ -41,7 +41,7 @@ const CreateSpaceForm = () => {
                             placeholder="Sarah &amp; Tom&apos;s Wedding"
                             className="w-full h-10 px-3 rounded-lg border border-input bg-background font-body text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring/20 focus:border-foreground/20 transition-all"
                         />
-                        {touchedFields.spaceName && errors.spaceName && (<p className="text-red-500 text-xs sm:text-sm">{String(errors.spaceName?.message)}</p>)}
+                        {errors.spaceName && (<p className="text-red-500 text-xs sm:text-sm">{String(errors.spaceName?.message)}</p>)}
                     </div>
                     <div>
                         <label className="font-body text-sm font-medium text-foreground block mb-2">Access password</label>
@@ -51,7 +51,7 @@ const CreateSpaceForm = () => {
                             placeholder="Something memorable for your guests"
                             className="w-full h-10 px-3 rounded-lg border border-input bg-background font-body text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring/20 focus:border-foreground/20 transition-all"
                         />
-                        {touchedFields.password && errors.password && (<p className="text-red-500 text-xs sm:text-sm">{String(errors.password?.message)}</p>)}
+                        {errors.password && (<p className="text-red-500 text-xs sm:text-sm">{String(errors.password?.message)}</p>)}
                     </div>
                 </div>
                 <Button
