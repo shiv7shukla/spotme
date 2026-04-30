@@ -3,14 +3,17 @@
 import { Button } from "@/components/ui/button";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { spaceSchema } from "../schemas/space.schema";
+import { usePathname } from "next/navigation";
+import { spaceSchema } from "@/app/schemas/space.schema";
 
 interface SpaceFormInput {
     spaceName: string,
     password: string
 };
 
-const CreateSpaceForm = () => {
+const SpaceForm = () => {
+
+    const pathname = usePathname();
     const { 
         register, 
         handleSubmit, 
@@ -23,7 +26,6 @@ const CreateSpaceForm = () => {
         resolver: zodResolver(spaceSchema),
         mode: "onSubmit"
     });
-
     const formSubmit = (d: SpaceFormInput) => {
         console.log(d)
     }
@@ -47,7 +49,7 @@ const CreateSpaceForm = () => {
                         <input
                             type="password"
                             {...register("password")}
-                            placeholder="Something memorable for your guests"
+                            placeholder={`${pathname === "organizer"?"Something memorable for your guests" : "From your organizer"}`}
                             className="w-full h-10 px-3 rounded-lg border border-input bg-background font-body text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring/20 focus:border-foreground/20 transition-all"
                         />
                         {errors.password && (<p className="text-red-500 text-xs sm:text-sm">{String(errors.password?.message)}</p>)}
@@ -58,11 +60,11 @@ const CreateSpaceForm = () => {
                     className="w-full"
                     disabled={isSubmitting}
                 >
-                    Create Space
+                    {`${pathname === "organizer"?"Create Space" : "Enter Space"}`}
                 </Button>
             </form>
         </div>
     );
 };
 
-export default CreateSpaceForm;
+export default SpaceForm;

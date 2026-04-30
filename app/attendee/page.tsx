@@ -14,8 +14,8 @@ const Page = () => {
                 <div className="p-4 sm:p-8 max-w-3xl mx-auto">
                     <div className="opacity-0 animate-fade-up">
                         <div className="mb-8">
-                            <h1 className="font-display text-3xl sm:text-4xl text-foreground mb-2">Create a space</h1>
-                            <p className="font-body text-muted-foreground">Set up a private space for your event photos.</p>
+                            <h1 className="font-display text-3xl sm:text-4xl text-foreground mb-2">Find your photos</h1>
+                            <p className="font-body text-muted-foreground">Enter the details shared by your event organizer.</p>
                         </div>
                         <SpaceForm />
                     </div>
