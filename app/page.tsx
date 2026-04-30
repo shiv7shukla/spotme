@@ -74,7 +74,7 @@ export default function Page() {
             <h2 className="font-display text-3xl sm:text-4xl text-foreground">Four simple steps</h2>
           </div>
 
-          <div className="grid grid-cols-4 md:grid-cols-4 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
             {steps.map((s, i) => (
               <div
                 key={i}
