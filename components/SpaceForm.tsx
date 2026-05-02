@@ -1,10 +1,11 @@
 'use client'
 
 import { Button } from "@/components/ui/button";
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { usePathname } from "next/navigation";
 import { spaceSchema } from "@/app/schemas/space.schema";
+import { createSpace } from "@/app/organizer/actions";
 
 interface SpaceFormInput {
     spaceName: string,
@@ -26,13 +27,13 @@ const SpaceForm = () => {
         resolver: zodResolver(spaceSchema),
         mode: "onSubmit"
     });
-    const formSubmit = (d: SpaceFormInput) => {
-        console.log(d)
+    const onSubmit: SubmitHandler<SpaceFormInput> = async(data) => {
+        await createSpace(data);
     }
 
     return (
         <div className="glass-card p-6 sm:p-8">
-            <form onSubmit={handleSubmit(formSubmit)}>
+            <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="space-y-5 mb-8">
                     <div>
                         <label className="font-body text-sm font-medium text-foreground block mb-2">Space name</label>
