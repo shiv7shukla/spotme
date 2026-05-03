@@ -6,6 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { usePathname } from "next/navigation";
 import { spaceSchema } from "@/app/schemas/space.schema";
 import { createSpace } from "@/app/organizer/actions";
+import { enterSpace } from "@/app/attendee/actions";
 
 interface SpaceFormInput {
     spaceName: string,
@@ -13,7 +14,6 @@ interface SpaceFormInput {
 };
 
 const SpaceForm = () => {
-
     const pathname = usePathname();
     const { 
         register, 
@@ -28,7 +28,8 @@ const SpaceForm = () => {
         mode: "onSubmit"
     });
     const onSubmit: SubmitHandler<SpaceFormInput> = async(data) => {
-        await createSpace(data);
+        if (pathname === "organizer") await createSpace(data);
+        else await enterSpace(data);
     }
 
     return (
