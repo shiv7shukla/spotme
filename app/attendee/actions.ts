@@ -5,5 +5,5 @@ import { SpaceData } from "../schemas/space.schema";
 import { spacesTable } from "@/server/db/schema";
 
 export async function enterSpace(data: SpaceData){
-    await db.insert(spacesTable).values(data);
+    await db.insert(spacesTable).values(data).onConflictDoNothing();
 }

@@ -3,10 +3,11 @@
 import { Button } from "@/components/ui/button";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { usePathname } from "next/navigation";
+import { redirect, usePathname } from "next/navigation";
 import { spaceSchema } from "@/app/schemas/space.schema";
 import { createSpace } from "@/app/organizer/actions";
 import { enterSpace } from "@/app/attendee/actions";
+import { toast } from "sonner";
 
 interface SpaceFormInput {
     spaceName: string,
@@ -16,7 +17,8 @@ interface SpaceFormInput {
 const SpaceForm = () => {
     const pathname = usePathname();
     const { 
-        register, 
+        register,
+        reset, 
         handleSubmit, 
         formState:{ errors, isSubmitting } 
     } = useForm<SpaceFormInput>({
@@ -28,10 +30,18 @@ const SpaceForm = () => {
         mode: "onSubmit"
     });
     const onSubmit: SubmitHandler<SpaceFormInput> = async(data) => {
-        if (pathname === "organizer") await createSpace(data);
-        else await enterSpace(data);
+        if (pathname === "organizer"){
+            const res = await createSpace(data);
+            if (res?.success)
+            {   
+                reset();
+                redirect("/upload")
+            } 
+            else
+                toast.error(res.message);
     }
-
+        else await enterSpace(data);
+}
     return (
         <div className="glass-card p-6 sm:p-8">
             <form onSubmit={handleSubmit(onSubmit)}>
