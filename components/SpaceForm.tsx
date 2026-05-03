@@ -30,12 +30,13 @@ const SpaceForm = () => {
         mode: "onSubmit"
     });
     const onSubmit: SubmitHandler<SpaceFormInput> = async(data) => {
-        if (pathname === "organizer"){
+        if (pathname === "/organizer"){
             const res = await createSpace(data);
+            console.log(res);
             if (res?.success)
             {   
                 reset();
-                redirect("/upload")
+                redirect("/upload");
             } 
             else
                 toast.error(res.message);
